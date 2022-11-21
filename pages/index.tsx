@@ -11,9 +11,10 @@ import {
   Center
 } from '@chakra-ui/react'
 import { Input  } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { useState } from 'react'
 import { type } from 'os'
+import  styles from '../styles/Home.module.css'
 type cardType = {
   no:number, 
   name:string,
@@ -43,7 +44,6 @@ export default function Home() {
         sec:section,
         year:admitYear
     }
-    
     setCardsData([...cards,newCard])
     setText("")
     setRolldata("")
@@ -53,7 +53,13 @@ export default function Home() {
   }
   return (
     <Tabs variant='soft-rounded' colorScheme='teal' align='center' >
-    <TabList style={{position:'sticky',top:'0',backgroundColor:'white'}}>
+    <TabList 
+    style={{
+      position:'sticky',
+      top:'0',
+      backgroundColor:'white',
+      }}
+      >
       <Tab>Details</Tab>
       <Tab>Input data</Tab>
     </TabList>
@@ -61,7 +67,7 @@ export default function Home() {
       <TabPanel>
         
         <TableContainer>
-  <Table variant='striped' colorScheme='teal'>
+  <Table variant='striped' colorScheme='teal'  >
     <Thead>
       <Tr>
         <Th>NO.</Th>
@@ -96,19 +102,17 @@ export default function Home() {
 
       </TabPanel>
       <TabPanel>
-       <Center>
         <Stack spacing={5}> 
-        <Input value={textData} onChange={(e) => setText(e.target.value)} type='text' width='lg' variant='filled' placeholder='Student Name' />
-        <Input value={rollNo} onChange={(e)=>setRolldata(e.target.value)} type='number' width='lg' variant='filled' placeholder='Roll no(in digit)' />
-        <Input value={classData} onChange={(e)=>setClassName(e.target.value)} type='text' width='lg' variant='filled' placeholder='Class' />
-        <Input value={section} onChange={(e) =>setSectionData(e.target.value)} type='text' width='lg' variant='filled' placeholder='Section' />
-        <Input value={admitYear} onChange={(e)=>setYear(e.target.value)} type='number' width='lg' variant='filled' placeholder='Addmision  year (in digit)' />
+        <Input value={textData} onChange={(e) => setText(e.target.value)} type='text'  variant='filled' placeholder='Student Name' />
+        <Input value={rollNo} onChange={(e)=>setRolldata(e.target.value)} type='number'  variant='filled' placeholder='Roll no(in digit)' />
+        <Input value={classData} onChange={(e)=>setClassName(e.target.value)} type='text' variant='filled' placeholder='Class' />
+        <Input value={section} onChange={(e) =>setSectionData(e.target.value)} type='text'  variant='filled' placeholder='Section' />
+        <Input value={admitYear} onChange={(e)=>setYear(e.target.value)} type='number'  variant='filled' placeholder='Addmision  year (in digit)' />
           <Center><Button onClick={onCliker} colorScheme='teal' width='sm' >
            Add
           </Button>
         </Center>
     </Stack>
-   </Center>
       </TabPanel>
     
     </TabPanels>
